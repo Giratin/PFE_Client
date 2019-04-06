@@ -1,17 +1,13 @@
 JarIndex-Version: 1.0
 
-jboss-remote-naming-2.0.1.Final.jar
+jboss-marshalling-river-1.4.8.Final.jar
 META-INF
 META-INF/maven
-META-INF/maven/org.jboss
-META-INF/maven/org.jboss/jboss-remote-naming
+META-INF/maven/org.jboss.marshalling
+META-INF/maven/org.jboss.marshalling/jboss-marshalling-river
+META-INF/services
 org
 org/jboss
-org/jboss/naming
-org/jboss/naming/remote
-org/jboss/naming/remote/client
-org/jboss/naming/remote/client/ejb
-org/jboss/naming/remote/protocol
-org/jboss/naming/remote/protocol/v1
-org/jboss/naming/remote/server
+org/jboss/marshalling
+org/jboss/marshalling/river
 

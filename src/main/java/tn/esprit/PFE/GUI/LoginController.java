@@ -52,12 +52,14 @@ public class LoginController implements Initializable {
         // TODO
         error.setText("");
         FXRouter.when("signup", "Signup.fxml");
+        FXRouter.when("home", "Home.fxml");
         FXRouter.setRouteContainer("signup", anchore);
+        FXRouter.setRouteContainer("home", anchore);
 
     }
 
     @FXML
-    private void handleLoginButtonAction(ActionEvent event) {
+    private void handleLoginButtonAction(ActionEvent event) throws IOException {
         Proxy proxy = new Proxy();
         String usrn = username.getText();
         String pwd = password.getText();
@@ -76,6 +78,7 @@ public class LoginController implements Initializable {
 
         Admin admn = service.getAutheticatedAdmin(usrn, pwd);
 
+        System.out.println("add " + admn);
         //Email incorrect
         if (admn.getEmail().equals("-")) {
             error.setText("Your username is inccorect");
@@ -84,6 +87,25 @@ public class LoginController implements Initializable {
         } else {
             admin = admn;
             System.out.println("admin connected " + admin);
+            //anchore.setPrefSize(800, 600);
+            //FXRouter.goTo("home");
+            try {
+
+                String file = "/fxml/Home.fxml";
+                FXMLLoader loader = new FXMLLoader();
+                final Parent root = (Parent) loader.load(getClass().getResourceAsStream(file));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("Home Admin");
+                stage.setScene(scene);
+                stage.show();
+            } catch (Throwable e) {
+                System.out.println("error " + e.getMessage());
+                System.out.println("cause " + e.getCause());
+                System.out.println("local " + e.getLocalizedMessage());
+                System.out.println("stack trace " + e.getStackTrace());
+            }
         }
 
     }
@@ -92,7 +114,7 @@ public class LoginController implements Initializable {
     private void handleCancelButtonAction(ActionEvent event) throws IOException {
         username.setText("");
         password.setText("");
-       /* try {
+        /* try {
             java.net.URL url = new File(PATH + "Signup.fxml").toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
@@ -110,7 +132,7 @@ public class LoginController implements Initializable {
             System.out.println("local " + e.getLocalizedMessage());
             System.out.println("stack trace " + e.getStackTrace());
         }*/
-       FXRouter.goTo("signup"); 
+        FXRouter.goTo("signup");
     }
 
 }

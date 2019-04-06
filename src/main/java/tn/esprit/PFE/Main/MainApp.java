@@ -4,15 +4,12 @@ package tn.esprit.PFE.Main;
 
 import entities.Admin;
 import entities.Employee;
-import java.io.File;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.naming.NamingException;
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 
 public class MainApp extends Application {
 
